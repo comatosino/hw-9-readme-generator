@@ -6,7 +6,19 @@ const generateMarkdown = require('./utils/generateMarkdown.js'); // get generate
 
 // DONE: Create an array of questions for user input
 const questions = [
-    
+    // enter GitHub username
+   {
+    type: 'input',
+    name: 'github',
+    message: 'enter GitHub username:',
+  },
+
+    // enter e-mail address
+  {
+    type: 'input',
+    name: 'email',
+    message: 'enter e-mail address:',
+  },
     // enter project name 
     // => (display as title of README)
    {
@@ -43,6 +55,13 @@ const questions = [
    message: 'enter contribution guidelines:',
    },
 
+    // testing information
+   {
+    type: 'input',
+    name: 'testing',
+    message: 'enter testing information:',
+    },
+
     // choose license from list of options 
     // => (badge for that license is added near the top of the README)
     // => (notice is added to the section of the README entitled License
@@ -51,28 +70,14 @@ const questions = [
      type: 'list',
      message: 'choose license',
      name: 'license',
-     choices: ['MIT', 'License 1', 'License 2'],
-   },
-
-     // enter GitHub username
-   {
-     type: 'input',
-     name: 'github',
-     message: 'enter GitHub username:',
-   },
-
-     // enter e-mail address
-   {
-     type: 'input',
-     name: 'email',
-     message: 'enter e-mail address:',
+     choices: ['MIT', 'License 1', 'None'],
    },
 ];
 
 // writes README to .md file
 function writeToFiledata (data) {
 
-  fs.writeFile(`${data.title}.md`, generateMarkdown(/*data*/), (err) =>
+  fs.writeFile(`${data.title}.md`, generateMarkdown(data), (err) =>
     err ? console.error(err) : console.log('README generated successfully!')
   );
 }
@@ -82,10 +87,10 @@ function init() {
 
     inquirer
     .prompt(questions)     // ask the questions
-    .then((data) => {      // do something with the user input
+    .then((answers) => {   // do something with the user input
     
-        // console.log(data);
-        writeToFiledata(data);
+        // console.log(answers);
+        writeToFiledata(answers);
 
     });
 }
