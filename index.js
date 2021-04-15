@@ -69,25 +69,25 @@ const questions = [
    },
 ];
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+// writes README to .md file
+function writeToFiledata (data) {
 
+  fs.writeFile(`${data.title}.md`, generateMarkdown(/*data*/), (err) =>
+    err ? console.error(err) : console.log('README generated successfully!')
+  );
+}
 
-// TODO: Create a function to initialize app
+// initialize application
 function init() {
 
     inquirer
     .prompt(questions)     // ask the questions
-    .then((data) => {      // do something with the user input (i.e. call generateMarkdown)
-        console.log(data);
-
-        // call generate markdown
-        // pass data object to generateMarkdown
-        // generateMarkdown returns a string template literal
-        // call writeToFile to write README to a new file
+    .then((data) => {      // do something with the user input
+    
+        // console.log(data);
+        writeToFiledata(data);
 
     });
-  
 }
 
 // Function call to initialize app
