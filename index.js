@@ -4,42 +4,42 @@ const inquirer = require('inquirer'); // get user input
 const fs = require('fs');             // write MD file
 const generateMarkdown = require('./utils/generateMarkdown.js'); // get generate method
 
-// TODO: Create an array of questions for user input
+// DONE: Create an array of questions for user input
 const questions = [
     
     // enter project name 
     // => (display as title of README)
    {
      type: 'input',
-     name: 'name',
-     message: 'Enter project name:',
+     name: 'title',
+     message: 'Enter project title:',
    },
 
     // enter project description
    {
      type: 'input',
-     name: 'name',
+     name: 'description',
      message: 'enter project description:',
    },
 
     // enter installation instructions
    {
      type: 'input',
-     name: 'name',
+     name: 'installation',
      message: 'enter installation instructions:',
    },
 
     // usage information
    {
    type: 'input',
-   name: 'name',
+   name: 'usage',
    message: 'enter usage information:',
    },
 
     // contribution guidelines
    {
    type: 'input',
-   name: 'name',
+   name: 'contribution',
    message: 'enter contribution guidelines:',
    },
 
@@ -50,21 +50,21 @@ const questions = [
    {
      type: 'list',
      message: 'choose license',
-     name: 'contact',
+     name: 'license',
      choices: ['MIT', 'License 1', 'License 2'],
    },
 
      // enter GitHub username
    {
      type: 'input',
-     name: 'name',
+     name: 'github',
      message: 'enter GitHub username:',
    },
 
      // enter e-mail address
    {
      type: 'input',
-     name: 'name',
+     name: 'email',
      message: 'enter e-mail address:',
    },
 ];
@@ -74,7 +74,21 @@ function writeToFile(fileName, data) {}
 
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+
+    inquirer
+    .prompt(questions)     // ask the questions
+    .then((data) => {      // do something with the user input (i.e. call generateMarkdown)
+        console.log(data);
+
+        // call generate markdown
+        // pass data object to generateMarkdown
+        // generateMarkdown returns a string template literal
+        // call writeToFile to write README to a new file
+
+    });
+  
+}
 
 // Function call to initialize app
 init();
