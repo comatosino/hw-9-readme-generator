@@ -1,4 +1,7 @@
-// TODO: Include packages needed for this application
+// DONE: Include packages needed for this application
+
+const inquirer = require('inquirer'); // get user input
+const fs = require('fs');             // write MD file
 
 // TODO: Create an array of questions for user input
 const questions = [];
