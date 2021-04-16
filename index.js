@@ -24,12 +24,6 @@ const questions = [
    },
 
    {
-    type: 'input',
-    name: 'title',
-    message: 'Enter project repository name:',
-   },
-
-   {
      type: 'input',
      name: 'description',
      message: 'Enter a short description of this project:',
@@ -39,7 +33,7 @@ const questions = [
     type: 'list',
     message: 'What kind of license should this project have?',
     name: 'license',
-    choices: ['MIT', 'Apache', 'GPL 3.0', 'None',],
+    choices: ['MIT', 'Apache 2.0', 'GPL 3.0', 'None',],
   },
 
    {
@@ -71,7 +65,7 @@ const questions = [
 // data: 
 function writeToFiledata (data) {
 
-  fs.writeFile(`${data.title}.md`, generateMarkdown(data), (err) =>
+  fs.writeFile(`${data.title}-README.md`, generateMarkdown(data), (err) =>
     err ? console.error(err) : console.log('README generated successfully!')
   );
 }

@@ -1,52 +1,54 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// returns a license badge based on which license is passed in
 function renderLicenseBadge(license) {
-// USE THIS: https://shields.io/category/license
+  if (license === 'MIT') {
+    return `[![${license}](https://img.shields.io/badge/license-MIT-green)](https://opensource.org/licenses/MIT)`;
 
-// use this format:
-//[![alt text](img src url)](link url)
-  
-}
+  } else if (license === 'Apache 2.0') {
+    return `[![${license}](https://img.shields.io/badge/license-Apache%202.0-red)](https://opensource.org/licenses/Apache-2.0)`;
 
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {
-
-  // md link format:
-  // [display text]( URL )
-  // choices: ['MIT', 'Apache', 'GPL 3.0', 'None',],
-
-  if (license == 'MIT') {
-    // return [display text]( URL )
-
-  } else if (license == 'Apache') {
-    // return [display text]( URL )
-
-  } else if (license == 'GPL 3.0') {
-    // return [display text]( URL )
+  } else if (license === 'GPL 3.0') {
+    return `[![${license}](https://img.shields.io/badge/license-GPL%203.0-blue)](https://opensource.org/licenses/GPL-3.0)`;
 
   } else {
-    return "";
+    return ""; // If there is no license, return an empty string
+  }  
+}
+
+// returns the license link based on which license is passed in
+function renderLicenseLink(license) {
+
+  if (license == 'MIT') {
+    return `[${license}](https://opensource.org/licenses/MIT)`;
+
+  } else if (license == 'Apache 2.0') {
+    return `[${license}](https://opensource.org/licenses/Apache-2.0)`;
+
+  } else if (license == 'GPL 3.0') {
+    return `[${license}](https://opensource.org/licenses/GPL-3.0)`;
+
+  } else {
+    return ""; // If there is no license, return an empty string
   }
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// returns the license section of README file
 function renderLicenseSection(license) {
-  return `
-  ## License
-  
-  `
+
+  if (license==='None') {
+    return ""; // If there is no license, return an empty string
+  } else {
+    return `
+## License
+    
+This project is covered under the ${renderLicenseLink(license)} license.
+    `
+  }
 }
 
-// WHEN I enter my GitHub username
-// THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
-// WHEN I enter my email address
-// THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
+// returns the text content of README file
 function generateMarkdown(data) {
   return `
-  
+  ${renderLicenseBadge(data.license)}
 # ${data.title}
 
 ## Description
@@ -61,7 +63,6 @@ ${data.description}
 - [Testing](#Testing)
 - [Questions](#Questions)
 - [License](#License)
-
 
 ## Installation
 
@@ -86,6 +87,7 @@ Questions? Reach out to me:
 GitHub: [${data.github}](https://github.com/${data.github})
 
 Email: ${data.email}
+
 
 ${renderLicenseSection(data.license)}
 
