@@ -24,6 +24,12 @@ const questions = [
    },
 
    {
+    type: 'input',
+    name: 'title',
+    message: 'Enter project repository name:',
+   },
+
+   {
      type: 'input',
      name: 'description',
      message: 'Enter a short description of this project:',
@@ -44,7 +50,7 @@ const questions = [
 
    {
     type: 'input',
-    name: 'testing',
+    name: 'tests',
     message: 'Enter any testing instructions:',
     },
 
@@ -59,10 +65,6 @@ const questions = [
    name: 'contribution',
    message: 'What does the user need to know about contributing to the repo?',
    },
-
-
-
-
 ];
 
 // writes README to .md file
