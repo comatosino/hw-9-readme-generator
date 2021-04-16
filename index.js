@@ -1,9 +1,8 @@
-// DONE: Include packages needed for this application
-
 const inquirer = require('inquirer'); // get user input
 const fs = require('fs');             // write MD file
 const generateMarkdown = require('./utils/generateMarkdown.js'); // get generate method
 
+// questions to ask the user
 const questions = [
    {
     type: 'input',
@@ -62,7 +61,7 @@ const questions = [
 ];
 
 // writes README to .md file
-// data: 
+// data: array of objects containing user data
 function writeToFiledata (data) {
 
   fs.writeFile(`${data.title}-README.md`, generateMarkdown(data), (err) =>
@@ -70,7 +69,7 @@ function writeToFiledata (data) {
   );
 }
 
-// initialize application
+// initialize app
 function init() {
 
     inquirer
