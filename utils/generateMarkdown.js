@@ -1,27 +1,43 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
+// USE THIS: https://shields.io/category/license
 
-
+// use this format:
+//[![alt text](img src url)](link url)
   
 }
 
-// USE THIS: https://shields.io/category/license
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
 
+  // md link format:
+  // [display text]( URL )
+  // choices: ['MIT', 'Apache', 'GPL 3.0', 'None',],
 
+  if (license == 'MIT') {
+    // return [display text]( URL )
 
+  } else if (license == 'Apache') {
+    // return [display text]( URL )
+
+  } else if (license == 'GPL 3.0') {
+    // return [display text]( URL )
+
+  } else {
+    return "";
+  }
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-
-
-
+  return `
+  ## License
+  
+  `
 }
 
 // WHEN I enter my GitHub username
@@ -71,12 +87,9 @@ GitHub: [${data.github}](https://github.com/${data.github})
 
 Email: ${data.email}
 
-## License
+${renderLicenseSection(data.license)}
 
-${data.license}
-
-  `;
-
+`;
 }
 
 module.exports = generateMarkdown;
