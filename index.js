@@ -1,13 +1,84 @@
-// TODO: Include packages needed for this application
+const inquirer = require('inquirer'); // get user input
+const fs = require('fs');             // write MD file
+const generateMarkdown = require('./utils/generateMarkdown.js'); // get generate method
 
-// TODO: Create an array of questions for user input
-const questions = [];
+// questions to ask the user
+const questions = [
+   {
+    type: 'input',
+    name: 'github',
+    message: 'Enter GitHub username:',
+  },
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+  {
+    type: 'input',
+    name: 'email',
+    message: 'Enter e-mail address:',
+  },
 
-// TODO: Create a function to initialize app
-function init() {}
+   {
+     type: 'input',
+     name: 'title',
+     message: 'Enter project title:',
+   },
 
-// Function call to initialize app
+   {
+     type: 'input',
+     name: 'description',
+     message: 'Enter a short description of this project:',
+   },
+
+   {
+    type: 'list',
+    message: 'What kind of license should this project have?',
+    name: 'license',
+    choices: ['MIT', 'Apache 2.0', 'GPL 3.0', 'None',],
+  },
+
+   {
+     type: 'input',
+     name: 'installation',
+     message: 'Enter any installation instructions:',
+   },
+
+   {
+    type: 'input',
+    name: 'tests',
+    message: 'Enter any testing instructions:',
+    },
+
+   {
+   type: 'input',
+   name: 'usage',
+   message: 'What does the user need to know about using the repo?',
+   },
+
+   {
+   type: 'input',
+   name: 'contribution',
+   message: 'What does the user need to know about contributing to the repo?',
+   },
+];
+
+// writes README to .md file
+// data: array of objects containing user data
+function writeToFiledata (data) {
+
+  fs.writeFile(`${data.title}-README.md`, generateMarkdown(data), (err) =>
+    err ? console.error(err) : console.log('README generated successfully!')
+  );
+}
+
+// initialize app
+function init() {
+
+    inquirer
+    .prompt(questions)
+    .then((answers) => {
+    
+        writeToFiledata(answers);
+
+    });
+}
+
 init();
