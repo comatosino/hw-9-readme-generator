@@ -4,7 +4,7 @@
 
 ## Description
 
-This application will generate a README file so more time can be spent coding!
+This CLI application will generate a README file so more time can be spent coding!
 
 ## Table of Contents
 
