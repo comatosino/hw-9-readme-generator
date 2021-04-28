@@ -6,10 +6,6 @@
 
 This application will generate a README file so more time can be spent coding!
 
-Click the gif below to see a video demo!
-
-[![link to video](./assets/README-Generator-gif.gif)](https://drive.google.com/file/d/1o_lF02C71RTCtE2vBltbSpu5j87ZflZ5/view)
-
 ## Table of Contents
 
 - [Installation](#installation)
@@ -21,17 +17,24 @@ Click the gif below to see a video demo!
 
 ## Installation
 
-run command npm i (node.js and the Inquirer package are required)
+```
+npm i
+```
 
 ## Usage
 
-run command node index.js
+```
+npm start
+```
+Click the gif below to see a video demo!
+
+[![link to video](./assets/README-Generator.gif)](https://drive.google.com/file/d/1o_lF02C71RTCtE2vBltbSpu5j87ZflZ5/view)
 
 ## Contributing
 
 To contribute, get in touch with me through one of the links below!
 
-## Tests
+## Testing
 
 No tests specified
 
