@@ -1,55 +1,55 @@
 
-  [![MIT](https://img.shields.io/badge/license-MIT-green)](https://opensource.org/licenses/MIT)
-# Professional-README-Generator
+  [![MIT](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
 
-## Description
+  # readme-generator
 
-This CLI application will generate a README file so more time can be spent coding!
+  ## Description
 
-## Table of Contents
+  CLI application that generates a README file
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#Contributing)
-- [Testing](#Testing)
-- [Questions](#Questions)
-- [License](#License)
+  ## Table of Contents
 
-## Installation
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Tests](#tests)
+  * [Contributing](#contributing)
+  * [Questions](#questions)
+  * [License](#license)
 
-```
-npm i
-```
+  ## Installation
 
-## Usage
+  Run the following command to install dependencies:
 
-```
-npm start
-```
-Click the gif below to see a video demo!
+  ```
+  npm install
+  ```
 
-[![link to video](./assets/README-Generator.gif)](https://drive.google.com/file/d/1o_lF02C71RTCtE2vBltbSpu5j87ZflZ5/view)
+  ## Usage
 
-## Contributing
+  Enter `node index.js` to run
 
-To contribute, get in touch with me through one of the links below!
+  ## Tests
 
-## Testing
+  ```
+  npm test
+  ```
 
-No tests specified
+  ## Contributing
 
-## Questions
+  Contact me to contribute!
 
-Questions? Reach out to me:
+  ## Questions
 
-GitHub: [comatosino](https://github.com/comatosino)
+  Questions? Open an issue or contact me at:
 
-Email: adamsiii.robert@gmail.com
+  |        |                                                     |
+  |-------:|-----------------------------------------------------|
+  | GitHub | [r0b-adams](https://github.com/r0b-adams) |
+  | Email  | adamsiii.robert@gmail.com                                       |
 
+  
+  ## License
 
-
-## License
+  This project is licensed under the MIT license.
+  
     
-This project is covered under the [MIT](https://opensource.org/licenses/MIT) license.
-    
-
