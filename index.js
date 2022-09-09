@@ -1,84 +1,17 @@
-const inquirer = require('inquirer'); // get user input
-const fs = require('fs');             // write MD file
-const generateMarkdown = require('./utils/generateMarkdown.js'); // get generate method
+const io = require('inquirer');
+const fs = require('fs/promises');
+const path = require('path');
+const questions = require('./utils/questions');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 
-// questions to ask the user
-const questions = [
-   {
-    type: 'input',
-    name: 'github',
-    message: 'Enter GitHub username:',
-  },
+const DIST_PATH = path.join(process.cwd(), 'dist', 'README.md');
 
-  {
-    type: 'input',
-    name: 'email',
-    message: 'Enter e-mail address:',
-  },
-
-   {
-     type: 'input',
-     name: 'title',
-     message: 'Enter project title:',
-   },
-
-   {
-     type: 'input',
-     name: 'description',
-     message: 'Enter a short description of this project:',
-   },
-
-   {
-    type: 'list',
-    message: 'What kind of license should this project have?',
-    name: 'license',
-    choices: ['MIT', 'Apache 2.0', 'GPL 3.0', 'None',],
-  },
-
-   {
-     type: 'input',
-     name: 'installation',
-     message: 'Enter any installation instructions:',
-   },
-
-   {
-    type: 'input',
-    name: 'tests',
-    message: 'Enter any testing instructions:',
-    },
-
-   {
-   type: 'input',
-   name: 'usage',
-   message: 'What does the user need to know about using the repo?',
-   },
-
-   {
-   type: 'input',
-   name: 'contribution',
-   message: 'What does the user need to know about contributing to the repo?',
-   },
-];
-
-// writes README to .md file
-// data: array of objects containing user data
-function writeToFiledata (data) {
-
-  fs.writeFile(`${data.title}-README.md`, generateMarkdown(data), (err) =>
-    err ? console.error(err) : console.log('README generated successfully!')
-  );
-}
-
-// initialize app
 function init() {
-
-    inquirer
-    .prompt(questions)
-    .then((answers) => {
-    
-        writeToFiledata(answers);
-
-    });
+  io.prompt(questions)
+    .then((answers) => generateMarkdown(answers))
+    .then((markdown) => fs.writeFile(DIST_PATH, markdown))
+    .then(() => console.log('README generated successfully!'))
+    .catch((err) => console.error(err.message));
 }
 
 init();
