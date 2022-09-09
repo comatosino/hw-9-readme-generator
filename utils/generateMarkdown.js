@@ -94,10 +94,8 @@ function generateMarkdown(data) {
 
   Questions? Open an issue or contact me at:
 
-  |        |                                                     |
-  |-------:|-----------------------------------------------------|
-  | GitHub | [${data.github}](https://github.com/${data.github}) |
-  | Email  | ${data.email}                                       |
+  GitHub: [${data.github}](https://github.com/${data.github})
+  Email: ${data.email}
 
   ${renderLicenseSection(data.license)}
     `;
