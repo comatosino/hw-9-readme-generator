@@ -42,14 +42,14 @@
 
   Questions? Open an issue or contact me at:
 
-  |        |                                                     |
-  |-------:|-----------------------------------------------------|
-  | GitHub | [r0b-adams](https://github.com/r0b-adams) |
-  | Email  | adamsiii.robert@gmail.com                                       |
 
-  
+
+  GitHub: [r0b-adams](https://github.com/r0b-adams)
+
+  Email: adamsiii.robert@gmail.com
+
+
   ## License
 
   This project is licensed under the MIT license.
-  
-    
+
