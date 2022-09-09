@@ -1,96 +1,106 @@
-// returns a license badge based on which license is passed in
+const LICENSES = require('./licenses');
+
+/**
+ * @param license string
+ * @returns license badge img and link on README if license given
+ */
 function renderLicenseBadge(license) {
-  if (license === 'MIT') {
-    return `[![${license}](https://img.shields.io/badge/license-MIT-green)](https://opensource.org/licenses/MIT)`;
+  switch (license) {
+    case LICENSES.MIT:
+      return `[![${LICENSES.MIT}](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)`;
 
-  } else if (license === 'Apache 2.0') {
-    return `[![${license}](https://img.shields.io/badge/license-Apache%202.0-red)](https://opensource.org/licenses/Apache-2.0)`;
+    case LICENSES.APACHE_2:
+      return `[![${LICENSES.APACHE_2}](https://img.shields.io/badge/license-Apache--2.0-blue)](https://opensource.org/licenses/Apache-2.0)`;
 
-  } else if (license === 'GPL 3.0') {
-    return `[![${license}](https://img.shields.io/badge/license-GPL%203.0-blue)](https://opensource.org/licenses/GPL-3.0)`;
+    case LICENSES.GPL_3:
+      return `[![${LICENSES.GPL_3}](https://img.shields.io/badge/license-GPL--3.0-blue)](https://opensource.org/licenses/GPL-3.0)`;
 
-  } else {
-    return ""; // If there is no license, return an empty string
-  }  
+    case LICENSES.BSD_3:
+      return `[![${LICENSES.BSD_3}](https://img.shields.io/badge/license-BSD--3-blue)](https://opensource.org/licenses/BSD-3-Clause)`;
+
+    default: // license === LICENSES.NONE
+      return ``;
+  }
 }
 
-// returns the license link based on which license is passed in
+/**
+ * @param license string
+ * @returns a link to the license section of the README, if license given
+ */
 function renderLicenseLink(license) {
-
-  if (license == 'MIT') {
-    return `[${license}](https://opensource.org/licenses/MIT)`;
-
-  } else if (license == 'Apache 2.0') {
-    return `[${license}](https://opensource.org/licenses/Apache-2.0)`;
-
-  } else if (license == 'GPL 3.0') {
-    return `[${license}](https://opensource.org/licenses/GPL-3.0)`;
-
-  } else {
-    return ""; // If there is no license, return an empty string
-  }
+  if (license === LICENSES.NONE) return ``;
+  return `[License](#license)`;
 }
 
-// returns the license section of README file
+/**
+ * @param license string
+ * @returns license section of the README, if license given
+ */
 function renderLicenseSection(license) {
+  if (license === LICENSES.NONE) return ``;
+  return `
+  ## License
 
-  if (license==='None') {
-    return ""; // If there is no license, return an empty string
-  } else {
-    return `## License
-    
-This project is covered under the ${renderLicenseLink(license)} license.
-    `
-  }
+  This project is licensed under the ${license} license.
+  `;
 }
 
-// returns the text content of README file
+/**
+ * @param data object with user answers
+ * @returns string template literal to be saved as markdown
+ */
 function generateMarkdown(data) {
-  return `${renderLicenseBadge(data.license)}
+  return `
+  ${renderLicenseBadge(data.license)}
 
-# ${data.title}
+  # ${data.title}
 
-## Description
+  ## Description
 
-${data.description}
+  ${data.desc}
 
-## Table of Contents
+  ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#Contributing)
-- [Testing](#Testing)
-- [Questions](#Questions)
-- [License](#License)
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Tests](#tests)
+  * [Contributing](#contributing)
+  * [Questions](#questions)
+  * ${renderLicenseLink(data.license)}
 
-## Installation
+  ## Installation
 
-${data.installation}
+  Run the following command to install dependencies:
 
-## Usage
+  \`\`\`
+  ${data.install}
+  \`\`\`
 
-${data.usage}
+  ## Usage
 
-## Contributing
+  ${data.usage}
 
-${data.contribution}
+  ## Tests
 
-## Testing
+  \`\`\`
+  ${data.test}
+  \`\`\`
 
-${data.tests}
+  ## Contributing
 
-## Questions
+  ${data.contributing}
 
-Questions? Reach out to me:
+  ## Questions
 
-GitHub: [${data.github}](https://github.com/${data.github})
+  Questions? Open an issue or contact me at:
 
-Email: ${data.email}
+  |        |                                                     |
+  |-------:|-----------------------------------------------------|
+  | GitHub | [${data.github}](https://github.com/${data.github}) |
+  | Email  | ${data.email}                                       |
 
-
-${renderLicenseSection(data.license)}
-
-`;
+  ${renderLicenseSection(data.license)}
+    `;
 }
 
 module.exports = generateMarkdown;
