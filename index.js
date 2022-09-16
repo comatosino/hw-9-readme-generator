@@ -6,7 +6,7 @@ const generateMarkdown = require('./utils/generateMarkdown.js');
 
 const DIST_PATH = path.join(process.cwd(), 'dist', 'README.md');
 
-function init() {
+function main() {
   io.prompt(questions)
     .then((answers) => generateMarkdown(answers))
     .then((markdown) => fs.writeFile(DIST_PATH, markdown))
@@ -14,4 +14,4 @@ function init() {
     .catch((err) => console.error(err.message));
 }
 
-init();
+main();
