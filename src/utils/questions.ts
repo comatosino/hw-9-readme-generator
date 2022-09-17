@@ -1,6 +1,6 @@
-const LICENSES = require('./licenses');
+import LICENSES from './licenses';
 
-module.exports = [
+const questions = [
   {
     type: 'input',
     name: 'title',
@@ -37,6 +37,7 @@ module.exports = [
     type: 'input',
     name: 'usage',
     message: 'What does the user need to know about using the repo?',
+    default: 'npm start',
   },
   {
     type: 'input',
@@ -57,3 +58,5 @@ module.exports = [
     ],
   },
 ];
+
+export default questions;

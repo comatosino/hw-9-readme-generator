@@ -6,4 +6,4 @@ const LICENSES = {
   NONE: 'None',
 };
 
-module.exports = LICENSES;
+export default LICENSES;
