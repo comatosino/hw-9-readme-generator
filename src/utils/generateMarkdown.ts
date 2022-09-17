@@ -1,10 +1,10 @@
-const LICENSES = require('./licenses');
+import LICENSES from './licenses';
 
 /**
  * @param license string
  * @returns license badge img and link on README if license given
  */
-function renderLicenseBadge(license) {
+const renderLicenseBadge = (license: string): string => {
   switch (license) {
     case LICENSES.MIT:
       return `[![${LICENSES.MIT}](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)`;
@@ -21,35 +21,35 @@ function renderLicenseBadge(license) {
     default: // license === LICENSES.NONE
       return ``;
   }
-}
+};
 
 /**
  * @param license string
  * @returns a link to the license section of the README, if license given
  */
-function renderLicenseLink(license) {
+const renderLicenseLink = (license: string): string => {
   if (license === LICENSES.NONE) return ``;
   return `[License](#license)`;
-}
+};
 
 /**
  * @param license string
  * @returns license section of the README, if license given
  */
-function renderLicenseSection(license) {
+const renderLicenseSection = (license: string) => {
   if (license === LICENSES.NONE) return ``;
   return `
   ## License
 
   This project is licensed under the ${license} license.
   `;
-}
+};
 
 /**
  * @param data object with user answers
  * @returns string template literal to be saved as markdown
  */
-function generateMarkdown(data) {
+const generateMarkdown = (data: { [key: string]: string }) => {
   return `
   ${renderLicenseBadge(data.license)}
 
@@ -78,7 +78,9 @@ function generateMarkdown(data) {
 
   ## Usage
 
+  \`\`\`
   ${data.usage}
+  \`\`\`
 
   ## Tests
 
@@ -99,6 +101,6 @@ function generateMarkdown(data) {
 
   ${renderLicenseSection(data.license)}
     `;
-}
+};
 
-module.exports = generateMarkdown;
+export default generateMarkdown;
