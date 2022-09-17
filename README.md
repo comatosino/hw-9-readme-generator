@@ -5,13 +5,12 @@
 
   ## Description
 
-  CLI application that generates a README file
+  CLI application that generates a README file.
 
   ## Table of Contents
 
   * [Installation](#installation)
   * [Usage](#usage)
-  * [Tests](#tests)
   * [Contributing](#contributing)
   * [Questions](#questions)
   * [License](#license)
@@ -26,13 +25,9 @@
 
   ## Usage
 
-  Enter `node index.js` to run
-
-  ## Tests
-
-  ```
-  npm test
-  ```
+ ```
+ npm start
+ ```
 
   ## Contributing
 
